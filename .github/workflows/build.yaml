@@ -1,5 +1,7 @@
 on:
   push:
+    tags:
+      - '*'
     branches:
       - main
 
@@ -28,3 +30,23 @@ jobs:
           path: 'python-3.13-alpine3.21-armv7-musl.tar.gz'
           # These files are already compressed
           compression-level: 0
+
+
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-24.04
+    if: github.ref_type == 'tag'
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: python-3.13-alpine3.21-armv7-musl
+
+      # TODO: Use a glob if we need to upload more files
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            python-3.13-alpine3.21-armv7-musl.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
