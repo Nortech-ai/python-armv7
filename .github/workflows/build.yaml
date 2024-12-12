@@ -24,6 +24,7 @@ jobs:
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
-          path: '*.tar.gz'
+          name: python-3.13-alpine3.21-armv7-musl
+          path: 'python-3.13-alpine3.21-armv7-musl.tar.gz'
           # These files are already compressed
           compression-level: 0
