@@ -2,3 +2,4 @@
 /lib/libc.musl-armv7.so.1
 /usr/local/lib/
 /usr/local/bin/
+/usr/bin/python3
