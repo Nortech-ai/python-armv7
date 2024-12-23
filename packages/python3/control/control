@@ -1,0 +1,7 @@
+Package: python3
+Version: 3.12.8-r1
+Architecture: armhf
+Maintainer: info@nortech.ai
+Description: High-level scripting language
+Priority: optional
+Depends: musl
