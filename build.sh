@@ -9,7 +9,7 @@ popd() {
 
 PYTHON_VERSION=3.13
 ALPINE_VERSION=3.21
-ALPINE_ARCH=armhf
+ALPINE_ARCH=armv7
 
 mkdir -p tmp
 

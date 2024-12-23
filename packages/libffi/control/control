@@ -1,6 +1,6 @@
 Package: libffi
 Version: 3.4.6-r0
-Architecture: armhf
+Architecture: armv7
 Maintainer: info@nortech.ai
 Description: portable, high level programming interface to various calling conventions.
 Priority: optional
