@@ -61,6 +61,16 @@ for package in packages/*; do
   popd
 
   pushd tmp/${package}/data
+
+  # In our system /lib is a symlink to /usr/lib and opkg complains if we
+  # try to install a package that has a file in /lib.
+  # So move all files in /lib to /usr/lib
+  if [ -d lib ]; then
+    mkdir -p usr/lib
+    mv lib/* usr/lib/
+    rm -rf lib
+  fi
+  
   $TAR --numeric-owner --group=0 --owner=0 -czf ../data.tar.gz ./*
   popd
 
