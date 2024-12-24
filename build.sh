@@ -6,6 +6,15 @@ popd() {
     command popd "$@" > /dev/null
 }
 
+# The --owner and --group options are not supported by the macOS tar
+# So we use gtar if we are on macOS
+#
+# To install run "brew install gnu-tar"
+if [[ $(uname) == "Darwin" ]]; then
+    TAR=$(which gtar)
+else
+    TAR=$(which tar)
+fi
 
 PYTHON_VERSION=3.13
 ALPINE_VERSION=3.21
@@ -35,7 +44,7 @@ for package in packages/*; do
   curl --silent -o tmp/${ALPINE_PACKAGE_NAME} https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main/${ALPINE_ARCH}/${ALPINE_PACKAGE_NAME}
 
   # Extract the package
-  tar --warning=no-unknown-keyword -xf tmp/${ALPINE_PACKAGE_NAME} -C tmp/${package}/data
+  $TAR --warning=no-unknown-keyword -xf tmp/${ALPINE_PACKAGE_NAME} -C tmp/${package}/data
 
   # Remove the package
   rm tmp/${ALPINE_PACKAGE_NAME}
@@ -48,14 +57,14 @@ for package in packages/*; do
   echo 2.0 > tmp/${package}/debian-binary
 
   pushd tmp/${package}/control
-  tar --numeric-owner --group=0 --owner=0 -czf ../control.tar.gz ./*
+  $TAR --numeric-owner --group=0 --owner=0 -czf ../control.tar.gz ./*
   popd
 
   pushd tmp/${package}/data
-  tar --numeric-owner --group=0 --owner=0 -czf ../data.tar.gz ./*
+  $TAR --numeric-owner --group=0 --owner=0 -czf ../data.tar.gz ./*
   popd
 
   pushd tmp/${package}
-  tar --numeric-owner --group=0 --owner=0 -cf ../${PACKAGE_NAME}-alpine${ALPINE_VERSION}-${ALPINE_ARCH}.ipk ./debian-binary ./data.tar.gz ./control.tar.gz 
+  $TAR --numeric-owner --group=0 --owner=0 -cf ../${PACKAGE_NAME}-alpine${ALPINE_VERSION}-${ALPINE_ARCH}.ipk ./debian-binary ./data.tar.gz ./control.tar.gz 
   popd
 done
