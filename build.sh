@@ -25,7 +25,9 @@ mkdir -p tmp
 # For each package in packages/
 for package in packages/*; do
   # Read package name from alpine-name
-  ALPINE_PACKAGE_NAME=$(cat ${package}/alpine-name)
+  ALPINE_FILE=$(cat ${package}/alpine-name)
+  ALPINE_BRANCH=${ALPINE_FILE%/*}
+  ALPINE_PACKAGE_NAME=${ALPINE_FILE#*/}
   PACKAGE_NAME=${ALPINE_PACKAGE_NAME%.*}
 
   echo "Building ${package}"
@@ -41,7 +43,7 @@ for package in packages/*; do
   cp -r ${package}/control tmp/${package}/control
 
   # Download the package
-  curl --silent -o tmp/${ALPINE_PACKAGE_NAME} https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main/${ALPINE_ARCH}/${ALPINE_PACKAGE_NAME}
+  curl --silent -o tmp/${ALPINE_PACKAGE_NAME} https://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/${ALPINE_BRANCH}/${ALPINE_ARCH}/${ALPINE_PACKAGE_NAME}
 
   # Extract the package
   $TAR --warning=no-unknown-keyword -xf tmp/${ALPINE_PACKAGE_NAME} -C tmp/${package}/data
