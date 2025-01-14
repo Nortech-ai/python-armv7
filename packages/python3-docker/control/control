@@ -1,0 +1,7 @@
+Package: python3-docker
+Version: 7.1.0-r0 
+Architecture: armv7
+Maintainer: info@nortech.ai
+Description: Python library for the Docker Engine API
+Priority: optional
+Depends: musl python3-docker
