@@ -1,0 +1,7 @@
+Package: libssl3
+Version: 3.3.3-r0
+Architecture: armv7
+Maintainer: info@nortech.ai
+Description: SSL shared libraries
+Priority: optional
+Depends: musl libcrypto3

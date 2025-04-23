@@ -1,0 +1,7 @@
+Package: lua5.4-libs
+Version: 5.4.7-r0
+Architecture: armv7
+Maintainer: info@nortech.ai
+Description: Lua dynamic library runtime
+Priority: optional
+Depends: musl

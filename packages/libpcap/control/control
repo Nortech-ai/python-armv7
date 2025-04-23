@@ -1,0 +1,7 @@
+Package: libpcap
+Version: 1.10.5-r0
+Architecture: armv7
+Maintainer: info@nortech.ai
+Description: A system-independent interface for user-level packet capture
+Priority: optional
+Depends: musl

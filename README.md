@@ -1,6 +1,6 @@
 # Adding a new package
 
-To add a new package first find it in the pkgs.alpinelinux.org under the armv7 architecture. i.e. for nmap: https://pkgs.alpinelinux.org/package/edge/main/armv7/nmap
+To add a new package first find it in the pkgs.alpinelinux.org under the armv7 architecture. i.e. for nmap: https://pkgs.alpinelinux.org/package/edge/v3.21/armv7/nmap
 
 
 We are currently following alpine version 3.21.

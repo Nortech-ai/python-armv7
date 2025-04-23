@@ -4,4 +4,4 @@ Architecture: armv7
 Maintainer: info@nortech.ai
 Description: Network exploration tool and security/port scanner
 Priority: optional
-Depends: musl nmap
+Depends: musl nmap lua5.4-libs libcrypto3 libssl3 libpcap
