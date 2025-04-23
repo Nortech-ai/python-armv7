@@ -1,0 +1,7 @@
+Package: nmap
+Version: 7.95-r1
+Architecture: armv7
+Maintainer: info@nortech.ai
+Description: Network exploration tool and security/port scanner
+Priority: optional
+Depends: musl nmap
