@@ -1,5 +1,5 @@
 Package: python3
-Version: 3.12.8-r1
+Version: 3.12.10-r0
 Architecture: armv7
 Maintainer: info@nortech.ai
 Description: High-level scripting language
